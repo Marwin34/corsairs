@@ -1,7 +1,6 @@
 #include "inputs.hpp"
 
 
-//INPUT TYPE TEXT
 Input::Input(){
 	x = 0;
 	y = 0;
@@ -49,8 +48,8 @@ void Input::update(sf::RenderWindow &win, float dX, float dY){
 void Input::eventHandler(sf::Event *event){
 	if (active){
 		if (event->type == sf::Event::TextEntered){
-			animationCnt = 0; // jesli wpisujemy caly czas widzimy kursor
-			if (event->text.unicode == 8){ //backspace
+			animationCnt = 0; // ALWAYS SHOW CURSOR WHEN TYPING
+			if (event->text.unicode == 8){ //BACKSPACE
 				if (string.size()>0)
 					string.erase(string.size() - 1, 1);
 			}
@@ -60,7 +59,7 @@ void Input::eventHandler(sf::Event *event){
 			std::string tmp = "";
 
 			if (type == 0){
-				if (string.size()>round(width / 7.5)){ // 7.5 dla czcionki 14 szerokoœæ liter w px
+				if (string.size()>round(width / 7.5)){ // 7.5 = SYMBOL HEIGHT
 					tmp = string.substr((string.size() - round(width / 7.5)));
 				}
 				else tmp = string;
@@ -90,7 +89,6 @@ std::string Input::value(){
 	return string;
 }
 
-//INPUT TYPE SLIDE
 SliderInput::SliderInput(){
 	x = 0;
 	y = 0;
@@ -124,15 +122,15 @@ void SliderInput::update(sf::RenderWindow &win, float dX, float dY){
 	float mPosY = (float)sf::Mouse::getPosition(win).y + dY - float(SCRN_HEIGHT / 2);
 
 	
-	if (mPosX > dX + x - width / 2 && mPosX < dX + x + width / 2 && mPosY > dY + y - 17 && mPosY <= dY + y + height / 2 ){ // realna pozycja paska 
+	if (mPosX > dX + x - width / 2 && mPosX < dX + x + width / 2 && mPosY > dY + y - 17 && mPosY <= dY + y + height / 2 ){ 
 		hoovered = true;
-		mX = (float)sf::Mouse::getPosition(win).x - float(SCRN_WIDTH / 2) + float(width) / 2 + 1; // ¿eby dzialalo dzlielenie do 100 :D
+		mX = (float)sf::Mouse::getPosition(win).x - float(SCRN_WIDTH / 2) + float(width) / 2 + 1; 
 	}
 	else hoovered = false;
 
 	stepLenght = (float)width / (float)maxValue;
 
-	std::ostringstream a; // zmienna do przerabiania liczb i tesktu w jeden ciagly tekst
+	std::ostringstream a;
 	a << cValue;
 	if (cValue == 1) a << " sztuka.";
 	else if (cValue >= 2 && cValue <= 3) a << " sztuki.";

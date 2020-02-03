@@ -39,7 +39,6 @@ public:
 	void save(std::string);
 	void update(Stats*, std::string);
 	void drop();
-	//bool login(std::string login, std::string password);
 	std::string registerNewObject(std::string, std::string);
 	std::vector <int> login(std::string, std::string );
 };

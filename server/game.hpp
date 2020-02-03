@@ -12,7 +12,6 @@
 #include "drop.hpp"
 #include "TxTDB\txtDb.hpp"
 
-//using namespace tmx;
 
 #define FRAME_RATE_LIMIT 100
 #define SCRN_WIDTH 800
@@ -33,8 +32,6 @@ class Game{
 	DatabaseManager database;
 
 	std::vector <Character> logOffQueue;
-
-	//sf::Window window;
 
 	bool run;
 

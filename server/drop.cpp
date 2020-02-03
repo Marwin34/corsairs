@@ -15,7 +15,6 @@ Drop::~Drop(){
 }
 
 void Drop::update(std::vector <Character> &chars){
-	//ROZPOCZECIE UODATE
 
 }
 

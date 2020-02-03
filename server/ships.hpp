@@ -10,9 +10,9 @@ class Ship{
 	int id;
 	int prize;
 	int maxHp;
-	float shipSpeed;//
-	float cannonRange; // 
-	float height; // jest to przyblizona po³owa wysokosci do dok³adniejszej kolizji
+	float shipSpeed;
+	float cannonRange; 
+	float height; 
 	int cargoSpace;
 	enum side {
 		topSide,

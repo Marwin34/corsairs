@@ -32,8 +32,6 @@ void Bullet::update(std::vector <Character> &chars){
 	startX += originSpdX;
 	startY += originSpdY;
 
-	//ROZPOCZECIE UODATE
-
 	float angleRad = atan2(startX - dstX, startY - dstY);
 
 	spdX = -sin(angleRad) * 4;

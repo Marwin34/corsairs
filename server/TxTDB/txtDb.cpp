@@ -16,10 +16,7 @@ void DatabaseManager::load(std::string name){
 	std::string login, password;
 
 	while (file >> id >> login >> password >> x >> y >> hp >> lvl >> pd >> gold >> shipId >> goods1 >> goods2 >> goods3 >> cannonballC >> grenadesC){
-
-		//std::cout << id << login << password << x << y << " hp " << hp << " lvl " << lvl << " pd " << pd << " gold " << gold << " sID " << shipId << " goods " << goods << cannonballC << grenadesC << std::endl;
-
-		dbObject tmp;	//TYMCZASOWY OBJEKT DO SPUSZOWANIA WEKTORA
+		dbObject tmp;
 		tmp.id = id;
 		tmp.login = login;
 		tmp.password = password;
@@ -61,19 +58,7 @@ void DatabaseManager::save(std::string name){
 
 	drop();
 }
-/*
-bool DatabaseManager::login(std::string login, std::string password){
-	load("database.txt");
-	for (unsigned int i = 0; i < dbObjects.size(); i++){
-		if (dbObjects[i].login == login && dbObjects[i].password == password){
-			//activeBufor.push_back(dbObjects[i]);
-			return true;
-		}
 
-	}
-	return false;
-}
-*/
 std::string DatabaseManager::registerNewObject(std::string login, std::string password){
 	load("database.txt");
 	int cnt = 0;

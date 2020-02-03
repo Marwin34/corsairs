@@ -1,14 +1,14 @@
 #include "characters.hpp"
 
-float calcDirAng(float mouseAng, float playerAng); // K¥TY
+float calcDirAng(float mouseAng, float playerAng);
 
 Character::Character(){
 	x = 100;
 	y = 0;
 
 	collideDmgCnt = 0;
-	currentAmmo = 0; // wskazuje ammo
-	howMuch = 0; // o ile ujmujemy ammo
+	currentAmmo = 0;
+	howMuch = 0;
 	stats.hp = 0;
 	stats.lvl = 1;
 	stats.exp = 0;
@@ -23,7 +23,7 @@ Character::Character(){
 	angle = 0;
 	windAngle = 0.0f;
 
-	maxSpeed = 0.0f; // WYLICZANY W PETLI
+	maxSpeed = 0.0f;
 	acceleration = 0.1f;
 	speed = 0.0f;
 	spdX = 0.0f;
@@ -190,7 +190,7 @@ void Character::reward(Character *data){
 
 void Character::dealWithOrder(std::vector<sf::Vector2i> &data1){
 	if (data1.size() == 5){
-		if (order.action == 0){ // sprzedaz
+		if (order.action == 0){ 
 			if (stats.gold + data1[order.goodId].y * order.count >= 9997){
 				stats.gold = 9998;
 			}
@@ -209,11 +209,11 @@ void Character::dealWithOrder(std::vector<sf::Vector2i> &data1){
 					ammunition[1] -= order.count;
 				}
 			}
-			order.action = 4; // a takie zabezpiecznie ...
+			order.action = 4; 
 			order.count = 0;
 			order.goodId = 6;
 		}
-		else if (order.action == 1){ // kupno
+		else if (order.action == 1){ 
 			stats.gold -= data1[order.goodId].x * order.count;
 			if (order.goodId < 5) {
 				if (order.goodId == 0) stats.goods1 += order.count;
@@ -228,7 +228,7 @@ void Character::dealWithOrder(std::vector<sf::Vector2i> &data1){
 					ammunition[1] += order.count;
 				}
 			}
-			order.action = 4; // a takie zabezpiecznie ...
+			order.action = 4; 
 			order.count = 0;
 			order.goodId = 6;
 		}
@@ -243,7 +243,7 @@ void Character::dealWithOrder(std::vector<sf::Vector2i> &data1){
 				stats.hp = tmp.getMaxHp();
 			}
 
-			order.action = 4; // a takie zabezpiecznie ...
+			order.action = 4; 
 			order.count = 0;
 			order.shipId = 4;
 		}
@@ -252,7 +252,7 @@ void Character::dealWithOrder(std::vector<sf::Vector2i> &data1){
 			stats.hp += order.count;
 			stats.gold -= order.count * 2;
 
-			order.action = 4; // a takie zabezpiecznie ...
+			order.action = 4; 
 			order.count = 0;
 			order.shipId = 4;
 		}
@@ -445,7 +445,7 @@ std::vector <int> Character::initGoods(){
 	return tmp;
 }
 
-sf::Packet& operator <<(sf::Packet& packet, const Character& character){ // OPERATOR WYSY£ANIA
+sf::Packet& operator <<(sf::Packet& packet, const Character& character){ 
 	return packet	<< character.login
 					<< character.x 
 					<< character.y 
@@ -469,7 +469,7 @@ sf::Packet& operator <<(sf::Packet& packet, const Character& character){ // OPER
 					<< character.collide;
 }
 
-sf::Packet& operator >>(sf::Packet& packet, Character& character){ // OPERATOR ODBIERANIA
+sf::Packet& operator >>(sf::Packet& packet, Character& character){ 
 	return packet   >> character.restart
 					>> character.up
 					>> character.right

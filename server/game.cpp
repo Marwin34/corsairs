@@ -40,7 +40,7 @@ void Game::start(){
 		mainTimer = mainClock.getElapsedTime();
 
 		if (mainTimer.asMilliseconds() > 20){
-			if (windResetTick > 6000){ // ZMIANA WIATRU
+			if (windResetTick > 6000){
 				windAngle = (std::rand() % 360) + 0;
 				windAngle -= 180;
 				windScale = (std::rand() % 3) + 1;
@@ -205,7 +205,6 @@ void Game::sendData(){
 		packet << floatingGoods[i];
 	}
 
-	//WYSY£ANIE DANYCH DO KAZDEGO
 	for (unsigned int i = 0; i < playersOnline.size(); i++){
 		if (socket.send(packet, playersOnline[i].getIp(), port) != sf::Socket::Done)
 		{

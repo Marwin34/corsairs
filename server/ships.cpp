@@ -65,44 +65,55 @@ void Ship::init(int data){
 }
 
 void Ship::calcualteSpawners(float angle, float x, float y){
+	//SET CANNONS POSITION
 	if (id == 1){
-		cannonsT[0].x = x + cos(-(angle + (M_PI / 2))) * 20; // GÓRNE DZIA£A
+		//FRONT CANNONS
+		cannonsT[0].x = x + cos(-(angle + (M_PI / 2))) * 20;
 		cannonsT[0].y = y + sin(-(angle + (M_PI / 2))) * 20;
 
-		cannonsR[0].x = x + cos(-(angle + (0))) * 20; // PRAWE DZIA£A
+		//RIGHT CANNONS
+		cannonsR[0].x = x + cos(-(angle + (0))) * 20;
 		cannonsR[0].y = y + sin(-(angle + (0))) * 20;
 
-		cannonsD[0].x = x + cos(-(angle + (M_PI / 2) * 3)) * 20; // DOLNE DZIA£A
+		//REAR CANNONS
+		cannonsD[0].x = x + cos(-(angle + (M_PI / 2) * 3)) * 20;
 		cannonsD[0].y = y + sin(-(angle + (M_PI / 2) * 3)) * 20;
 
-		cannonsL[0].x = x + cos(-(angle + (M_PI))) * 20; // LEWE DZIA£A
+		//LEFT CANNONS
+		cannonsL[0].x = x + cos(-(angle + (M_PI))) * 20; 
 		cannonsL[0].y = y + sin(-(angle + (M_PI))) * 20;
 
 	}
 	else if (id == 2){
-		cannonsT[0].x = x + cos(-(angle + (M_PI / 2))) * 20; // GÓRNE DZIA£A
+		//FRONT CANNONS
+		cannonsT[0].x = x + cos(-(angle + (M_PI / 2))) * 20;
 		cannonsT[0].y = y + sin(-(angle + (M_PI / 2))) * 20;
 
-		cannonsR[0].x = x + cos(-(angle) + M_PI / 4) * 20; // PRAWE DZIA£A
+		//RIGHT CANNONS
+		cannonsR[0].x = x + cos(-(angle) + M_PI / 4) * 20;
 		cannonsR[0].y = y + sin(-(angle) + M_PI / 4) * 20;
 
-		cannonsR[1].x = x + cos(-(angle) - M_PI / 4) * 20; // PRAWE DZIA£A
+		cannonsR[1].x = x + cos(-(angle) - M_PI / 4) * 20;
 		cannonsR[1].y = y + sin(-(angle) - M_PI / 4) * 20;
 
-		cannonsD[0].x = x + cos(-(angle + (M_PI / 2) * 3)) * 20; // DOLNE DZIA£A
+		//REAR CANNONS
+		cannonsD[0].x = x + cos(-(angle + (M_PI / 2) * 3)) * 20;
 		cannonsD[0].y = y + sin(-(angle + (M_PI / 2) * 3)) * 20;
 
-		cannonsL[0].x = x + cos(-(angle + (M_PI)) + M_PI / 4) * 20; // LEWE DZIA£A
+		//LEFT CANNONS
+		cannonsL[0].x = x + cos(-(angle + (M_PI)) + M_PI / 4) * 20;
 		cannonsL[0].y = y + sin(-(angle + (M_PI)) + M_PI / 4) * 20;
 
-		cannonsL[1].x = x + cos(-(angle + (M_PI)) - M_PI / 4) * 20; // LEWE DZIA£A
+		cannonsL[1].x = x + cos(-(angle + (M_PI)) - M_PI / 4) * 20;
 		cannonsL[1].y = y + sin(-(angle + (M_PI)) - M_PI / 4) * 20;
 	}
 	else if (id == 3){
-		cannonsT[0].x = x + cos(-(angle + (M_PI / 2))) * 20; // GÓRNE DZIA£A
+		//FRONT CANNONS
+		cannonsT[0].x = x + cos(-(angle + (M_PI / 2))) * 20;
 		cannonsT[0].y = y + sin(-(angle + (M_PI / 2))) * 20;
 
-		cannonsR[0].x = x + cos(-(angle + (M_PI / 4))) * 25; // PRAWE DZIA£A
+		//RIGHT CANNONS
+		cannonsR[0].x = x + cos(-(angle + (M_PI / 4))) * 25;
 		cannonsR[0].y = y + sin(-(angle + (M_PI / 4))) * 25;
 
 		cannonsR[1].x = x + cos(-(angle)) * 20;
@@ -111,13 +122,15 @@ void Ship::calcualteSpawners(float angle, float x, float y){
 		cannonsR[2].x = x + cos(-(angle - (M_PI / 4))) * 25;
 		cannonsR[2].y = y + sin(-(angle - (M_PI / 4))) * 25;
 
-		cannonsD[0].x = x + cos(-(angle + (M_PI / 2)*3) + M_PI / 6) * 20; // DOLNE DZIA£A
+		//REAR CANNONS
+		cannonsD[0].x = x + cos(-(angle + (M_PI / 2)*3) + M_PI / 6) * 20;
 		cannonsD[0].y = y + sin(-(angle + (M_PI / 2) * 3) + M_PI / 6) * 20;
 
 		cannonsD[1].x = x + cos(-(angle + (M_PI / 2) * 3) - M_PI / 6) * 20;
 		cannonsD[1].y = y + sin(-(angle + (M_PI / 2) * 3) - M_PI / 6) * 20;
 
-		cannonsL[0].x = x + cos(-(angle + (M_PI / 4) * 3)) * 25; // LEWE DZIA£A
+		//LEFT CANNONS
+		cannonsL[0].x = x + cos(-(angle + (M_PI / 4) * 3)) * 25;
 		cannonsL[0].y = y + sin(-(angle + (M_PI / 4) * 3)) * 25;
 
 		cannonsL[1].x = x + cos(-(angle + (M_PI))) * 20;
@@ -196,10 +209,10 @@ std::vector < sf::Vector2f > Ship::getCollisinonsPoints(float angle, float x, fl
 		a[1].y = y + sin(-(mainAngle + 3 * (M_PI / 2))) * 15;
 	}
 	else if (id == 2){
-		a[0].x = x + cos(-(mainAngle + (M_PI / 2))) * 20; // przód
+		a[0].x = x + cos(-(mainAngle + (M_PI / 2))) * 20;
 		a[0].y = y + sin(-(mainAngle + (M_PI / 2))) * 20;
 
-		a[1].x = x + cos(-(mainAngle + 3 * (M_PI / 2))) * 15; // ty³
+		a[1].x = x + cos(-(mainAngle + 3 * (M_PI / 2))) * 15;
 		a[1].y = y + sin(-(mainAngle + 3 * (M_PI / 2))) * 15;
 	}
 	else if (id == 3){

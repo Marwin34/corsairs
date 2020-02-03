@@ -40,7 +40,7 @@ void DatabaseManager::load(std::string name){
 }
 
 void DatabaseManager::save(std::string name){
-	std::ofstream file("schowek.txt", std::ios::app);
+	std::ofstream file("resources/schowek.txt", std::ios::app);
 
 	for (unsigned int i = 0; i < dbObjects.size(); i++){
 		file << dbObjects[i].id << " " << dbObjects[i].login << " " << dbObjects[i].password << " "
@@ -52,7 +52,7 @@ void DatabaseManager::save(std::string name){
 	file.close();
 
 	remove(name.c_str());
-	rename("schowek.txt", name.c_str());
+	rename("resources/schowek.txt", name.c_str());
 
 	std::cout << "SAVE!" << std::endl;
 
@@ -60,7 +60,7 @@ void DatabaseManager::save(std::string name){
 }
 
 std::string DatabaseManager::registerNewObject(std::string login, std::string password){
-	load("database.txt");
+	load("resources/database.txt");
 	int cnt = 0;
 	for (unsigned int i = 0; i < dbObjects.size(); i++){
 		if (dbObjects[i].login == login) return "2";
@@ -86,7 +86,7 @@ std::string DatabaseManager::registerNewObject(std::string login, std::string pa
 		tmp.pStats.goods3 = 1;
 
 		dbObjects.push_back(tmp);
-		save("database.txt");
+		save("resources/database.txt");
 		return "1";
 	}
 	drop();
@@ -96,7 +96,7 @@ std::vector <int> DatabaseManager::login(std::string data1, std::string data2){
 	std::vector <int> tmp;
 	tmp.resize(0);
 
-	load("database.txt");
+	load("resources/database.txt");
 
 	for (unsigned int i = 0; i < dbObjects.size(); i++){
 		if (dbObjects[i].login == data1 && dbObjects[i].password == data2){
@@ -121,7 +121,7 @@ std::vector <int> DatabaseManager::login(std::string data1, std::string data2){
 }
 
 void DatabaseManager::update(Stats *data1, std::string data2){ 
-	load("database.txt");
+	load("resources/database.txt");
 	for (unsigned int i = 0; i < dbObjects.size(); i++){
 		if (dbObjects[i].login == data2){
 			std::cout << data1->x << " , " << data1->y << std::endl;
@@ -140,7 +140,7 @@ void DatabaseManager::update(Stats *data1, std::string data2){
 			break;
 		}
 	}
-	save("database.txt");
+	save("resources/database.txt");
 }
 
 void DatabaseManager::drop(){

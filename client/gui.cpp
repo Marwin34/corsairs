@@ -8,18 +8,18 @@ Gui::Gui(){
 	registerFlag = false;
 	restartFlag = false;
 	apkShutDown = false;
-	inPortRange = false; // flaga czy odleglosci od portu
+	inPortRange = false;
 	sellFlag = false;
 	buyFlag = false;
 	repairFlag = false;
 	upgradeShip = false;
-	lOrR = 0; // login czy register
+	lOrR = 0; // LOGIN OR REGISTER
 	unactive = 0;
 	serverMessageCnt = 0;
 	ammoPointerX = 0;
 	poleCnt = 0;
 	playerShip = 3;
-	//sklep
+	//SHOP
 	shop.activeShip = 3;
 	shop.activeGood = 5;
 	shop.sellingPrize = 0;
@@ -80,7 +80,7 @@ void Gui::load(AssetsManager &data){
 	change1B.init(data, "loginForm", -150, -120);
 	change2B.init(data, "registerForm", -50, -120);
 
-	//init sklepu
+	//SHOP INITIALIZATION
 	shop.closeShop.init(data, "closeWindow", 310, -240);
 	shop.shopBackdrop.setTexture(data["shopBackdrop"]);
 	shop.shopBackdrop.setOrigin(data["shopBackdrop"].getSize().x / 2, data["shopBackdrop"].getSize().y / 2);
@@ -123,7 +123,7 @@ void Gui::update(Character *data, sf::RenderWindow &data2, std::vector<sf::Vecto
 	}
 	if (showServerMessage){
 		serverMessageCnt++;
-		if (serverMessageCnt > 150){ // delay dla wyœwietlania wiadomosci z serwera
+		if (serverMessageCnt > 150){ 
 			serverMessageCnt = 0;
 			showServerMessage = false;
 			messageText = "";
@@ -172,7 +172,7 @@ void Gui::update(Character *data, sf::RenderWindow &data2, std::vector<sf::Vecto
 		if (unactive > 2) unactive = 0;
 	}
 	else if (status == inGame){
-		shopUpdate(dX, dY, data2, data3);	// update calego sklepu
+		shopUpdate(dX, dY, data2, data3);
 		
 		lvl.setValue(data->getInfo()[0]);
 		exp.setValue(data->getInfo()[1]);
@@ -182,15 +182,14 @@ void Gui::update(Character *data, sf::RenderWindow &data2, std::vector<sf::Vecto
 		cannobalsCnt.setValue(data->getInfo()[7]);
 		grenadesCnt.setValue(data->getInfo()[8]);
 
-		//wczytanie towarów gracza
+		//PLAYER'S GOODS LOADING
 		shop.shopGoods[0] = data->getInfo()[4];
 		shop.shopGoods[1] = data->getInfo()[5];
 		shop.shopGoods[2] = data->getInfo()[6];
 		shop.shopGoods[3] = data->getInfo()[7];
 		shop.shopGoods[4] = data->getInfo()[8];
-		//wczytanie kasy gracza
 		shop.playerGold = data->getInfo()[2];
-		//hp do naprawy max za kase max
+
 		shop.toRepair = shop.statsShips[playerShip].getMaxHp() - data->getInfo()[9];
 
 		windCursor.setPosition(dX + SCRN_WIDTH / 2 - 59, dY + SCRN_HEIGHT / 2 - 60);
@@ -258,13 +257,11 @@ void Gui::eventUpdate(sf::Event *event){
 		change2B.eventHandler(event);
 	}
 	else if (status == inGame){
-		//sklep
 		if(shop.insertingValue) shop.goodsCount.eventHandler(event);
 
 		restart.eventHandler(event);
 		portB.eventHandler(event);
 
-		//sklep
 		shop.closeShop.eventHandler(event);
 		shop.shipIcon1.eventHandler(event);
 		shop.shipIcon2.eventHandler(event);
@@ -288,7 +285,6 @@ void Gui::setWindCursorR(float data){
 }
 
 void Gui::draw(sf::RenderWindow *win){
-	//win->draw(uiLBC);
 	if (status == loginScreen){
 		win->draw(mainTheme); 
 		if (lOrR < 1){
@@ -326,7 +322,7 @@ void Gui::draw(sf::RenderWindow *win){
 
 		if (!shop.visible && inPortRange) portB.draw(win);
 
-		if (shop.visible) shopDraw(win);	//wyœwietlanie sklepu
+		if (shop.visible) shopDraw(win);
 
 		if (restart.getDrawFlag()) restart.draw(win);
 	} 
@@ -349,7 +345,7 @@ void Gui::setMessage(std::string data){
 void Gui::shopUpdate(float dX, float dY, sf::RenderWindow &win, std::vector<sf::Vector2i> &data1){
 	shop.shopBackdrop.setPosition(dX, dY);
 	//shop.valueBackdrop.setPosition(dX, dY);
-	portB.posUpdate(dX, dY);//przycisk wejscia do sklepy
+	portB.posUpdate(dX, dY);
 	shop.closeShop.posUpdate(dX, dY);
 	shop.shipIcon1.posUpdate(dX, dY);
 	shop.shipIcon2.posUpdate(dX, dY);
@@ -366,7 +362,7 @@ void Gui::shopUpdate(float dX, float dY, sf::RenderWindow &win, std::vector<sf::
 	shop.valueYesB.posUpdate(dX, dY);
 	shop.repairB.posUpdate(dX, dY);
 	
-	if (shop.activeShip >= 0 && shop.activeShip < 3) { // nie dokonca sama pozycja ale nie da sie podzielic ...
+	if (shop.activeShip >= 0 && shop.activeShip < 3) {
 		std::string textValue;
 		textValue = "Nazwa: " + shop.statsShips[shop.activeShip].getStats()[0] +
 			"\nLadownia: " + shop.statsShips[shop.activeShip].getStats()[1] +
@@ -378,7 +374,7 @@ void Gui::shopUpdate(float dX, float dY, sf::RenderWindow &win, std::vector<sf::
 	}
 	else shop.shipsCompare.setPositionAndValue(dX - 320, dY + 100, "");
 
-	if (shop.activeGood >= 0 && shop.activeGood < 5) { // opis towaru (jak klikniesz w jakis)
+	if (shop.activeGood >= 0 && shop.activeGood < 5) { 
 		std::string textValue;
 
 		if (shop.activeGood == 0) textValue = "Nazwa: Kawa\n";
@@ -387,7 +383,7 @@ void Gui::shopUpdate(float dX, float dY, sf::RenderWindow &win, std::vector<sf::
 		else if (shop.activeGood == 3) textValue = "Nazwa: Kule armatnie\n";
 		else if (shop.activeGood == 4) textValue = "Nazwa: Granaty armatnie\n";
 
-		std::ostringstream a; // zmienna do przerabiania liczb i tesktu w jeden ciagly tekst
+		std::ostringstream a; 
 
 		a << "Ilosc: "
 			<< shop.shopGoods[shop.activeGood]
@@ -521,7 +517,7 @@ void Gui::buttonsReset(){
 	portB.activeReset();
 	change1B.activeReset();
 	change2B.activeReset();
-	//sklep
+
 	shop.closeShop.activeReset();
 	shop.shipIcon1.activeReset();
 	shop.shipIcon2.activeReset();
@@ -573,7 +569,7 @@ std::vector <int> Gui::shopOrder(){
 	std::vector <int> tmp;
 	tmp.resize(0);
 
-	if ((shop.action == 0 && sellFlag) || (shop.action == 1 && buyFlag)){ // 0 sprzedaz towaru 1 kupno towatu 2 upgarde statku
+	if ((shop.action == 0 && sellFlag) || (shop.action == 1 && buyFlag)){ 
 		tmp.push_back(shop.action);
 		tmp.push_back(shop.activeGood);
 		tmp.push_back(shop.goodsCount.value());

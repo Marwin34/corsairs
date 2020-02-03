@@ -20,9 +20,9 @@ void AssetsManager::load(){
 	textures["bullet"].setSmooth(true);
 	textures["hpSmall"].loadFromFile("resources/img/hp.png");
 	textures["hpSmall"].setSmooth(true);
-	textures["uiLBC"].loadFromFile("resources/img/uiLBC.png"); // RBC - not right bottom corner ui element
+	textures["uiLBC"].loadFromFile("resources/img/uiLBC.png"); // RBC - NOT RIGHT BOTTOM CORNENR UI ELEMENT
 	textures["uiLBC"].setSmooth(true);
-	textures["uiRBC"].loadFromFile("resources/img/uiRBC.png"); // LBC - not left bottom corner ui element
+	textures["uiRBC"].loadFromFile("resources/img/uiRBC.png"); // LBC - NOT LEFT BOTTOM CORNER UI ELEMENT
 	textures["uiRBC"].setSmooth(true);
 	textures["uiM"].loadFromFile("resources/img/uiM.png");
 	textures["uiM"].setSmooth(true);

@@ -58,7 +58,7 @@ void Bullet::draw(sf::RenderWindow *win){
 	win->draw(sprite);
 }
 
-sf::Packet& operator <<(sf::Packet& packet, const Bullet& bullet){ // NIE UWZYWANY
+sf::Packet& operator <<(sf::Packet& packet, const Bullet& bullet){
 	return packet << bullet.x << bullet.y << bullet.startX << bullet.startX << bullet.dstX << bullet.dstY;
 }
 

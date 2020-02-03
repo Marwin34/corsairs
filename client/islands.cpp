@@ -29,10 +29,10 @@ void Island::init(std::string data1, AssetsManager &data2){
 		sprite.setTexture(data2["island"]);
 		sprite.setPosition(x - width, y - height);
 
-		//ceny towarów
+		//PRICES
 		goodsValues.resize(5);
-		goodsValues[0].x = 5; // x cena kupna 
-		goodsValues[0].y = 3; // y cena sprzedazy
+		goodsValues[0].x = 5; 
+		goodsValues[0].y = 3;
 		goodsValues[1].x = 13;
 		goodsValues[1].y = 12;
 		goodsValues[2].x = 15;
@@ -55,7 +55,7 @@ void Island::init(std::string data1, AssetsManager &data2){
 		sprite.setTexture(data2["island"]);
 		sprite.setPosition(x - width, y - height);
 
-		//ceny towarów
+		//PRICES
 		goodsValues.resize(5);
 		goodsValues[0].x = 15;
 		goodsValues[0].y = 13;

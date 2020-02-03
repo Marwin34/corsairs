@@ -1,6 +1,6 @@
 #include "cnt_txt.hpp"
 
-//BIBLIOTEKA U£ATWIAJ¥CA TWORZENIE NAPISÓW W SFML
+
 Counter::Counter(int red, int green, int blue, int charSize){
     text.setString("0");
     text.setCharacterSize(charSize);

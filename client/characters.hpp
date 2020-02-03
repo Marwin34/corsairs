@@ -15,7 +15,6 @@
 
 #pragma once
 
-//#define M_PI 3.14159265358979323846
 
 class Character{
 	struct ShopOrder{
@@ -67,7 +66,7 @@ class Character{
 	float maxSpeed;
 	int mExp;
 	int cCargoSpace;
-	int currentAmmo; // okresla urzywane obecnie ammo
+	int currentAmmo; 
 	friend sf::Packet& operator <<(sf::Packet& packet, const Character& character);
 	friend sf::Packet& operator >>(sf::Packet& packet, Character& character);
 	Ship model;

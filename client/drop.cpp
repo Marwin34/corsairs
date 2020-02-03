@@ -24,7 +24,7 @@ void Drop::draw(sf::RenderWindow *win){
 	win->draw(sprite);
 }
 
-sf::Packet& operator <<(sf::Packet& packet, const Drop& drop){ // NIE UWZYWANY
+sf::Packet& operator <<(sf::Packet& packet, const Drop& drop){
 	return packet << drop.x << drop.y;
 }
 

@@ -81,7 +81,6 @@ void Character::update(){
 		models[2].setRotation(360 - angle);
 		models[2].setPosition(x, y);
 
-		//UPDATE HP BARA
 		float hpPr = static_cast<float>(statistics.hp) / model.getMaxHp();
 		hpBar.setScale(hpPr, 1);
 		hpBar.setPosition(x, y - 60);
@@ -91,18 +90,15 @@ void Character::update(){
 }
 
 void Character::movingUpdate(){
-	//std::cout << x << " , " << y << std::endl;
 	x += spdX;
 	y += spdY;
 }
 
 void Character::checkPosition(){
 	if (fabs(x - realX) > 0.1){
-		//std::cout << " from " << x << " to " << realX << std::endl;
 		x = realX;
 	}
 	if (fabs(y - realY) > 0.1){
-		//std::cout << " from " << y << " to " << realY << std::endl;
 		y = realY;
 	}
 }
@@ -258,7 +254,7 @@ std::vector<int> Character::getInfo(){
 	return table;
 }
 
-sf::Packet& operator <<(sf::Packet& packet, const Character& character){// OPERATOR WYSY£ANIA
+sf::Packet& operator <<(sf::Packet& packet, const Character& character){
 	return packet	<< character.up 
 					<< character.right 
 					<< character.down 
@@ -271,7 +267,7 @@ sf::Packet& operator <<(sf::Packet& packet, const Character& character){// OPERA
 					<< character.order.count;
 }
 
-sf::Packet& operator >>(sf::Packet& packet, Character& character){// OPERATOR ODBIERANIA
+sf::Packet& operator >>(sf::Packet& packet, Character& character){
 	return packet	>> character.login
 					>> character.realX 
 					>> character.realY 

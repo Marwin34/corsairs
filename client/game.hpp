@@ -13,7 +13,6 @@
 #include "islands.hpp"
 #include "drop.hpp"
 
-//using namespace tmx;
 
 #define FRAME_RATE_LIMIT 100
 #define SCRN_WIDTH 1024

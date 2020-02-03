@@ -58,14 +58,14 @@ void Game::start(){
 
 	while (window.isOpen())
 	{
-		receiveData(); // odbiór danych z serwera
+		receiveData(); 
 		if (connectCnt >= 50000){
 			ui.setMessage("4");
 			connectCnt = 1;
 		}
 
 		if (!logged){
-			ui.updateStatus(loginScreen); // zmiana stanu gui
+			ui.updateStatus(loginScreen); 
 			wantToLogOff = false;
 		}
 		if (logged) ui.updateStatus(inGame);
@@ -75,7 +75,7 @@ void Game::start(){
 		{
 			ui.eventUpdate(&event);
 
-			if (logged && !ui.busy()){ // jeœli nie jestesmy w ui to player obs³u¿y event
+			if (logged && !ui.busy()){ 
 
 				players[myPlayerIndex].eventHanlder(&event);
 			}
@@ -95,7 +95,7 @@ void Game::start(){
 		if (mainTimer.asMilliseconds() > 50 && !logged){
 			Character tmp;
 			ui.update(&tmp, window, archipelag[0].getGoodsValues());
-			if (ui.terminateWindow()) window.close(); //wyjscie z gry
+			if (ui.terminateWindow()) window.close();
 
 			view.move(tmp.getPos().x - view.getCenter().x, tmp.getPos().y - view.getCenter().y);
 			
@@ -124,11 +124,10 @@ void Game::start(){
 			}
 
 			imageUpdate();
-			ui.update(&players[myPlayerIndex], window, nearestIsland().getGoodsValues()); //aktualizacja ui
+			ui.update(&players[myPlayerIndex], window, nearestIsland().getGoodsValues()); 
 			view.move(players[myPlayerIndex].getPos().x - view.getCenter().x, players[myPlayerIndex].getPos().y - view.getCenter().y);
 
 			draw();
-			//std::cout << players[myPlayerIndex].getPos().x << " , " << players[myPlayerIndex].getPos().y << std::endl;
 			mainClock.restart();
 			sendData();
 		}
@@ -257,7 +256,7 @@ void Game::sendData(){
 		{
 			std::cout << "Blad wysylania" << std::endl;
 		}
-		players[myPlayerIndex].resetBoolka(); // wyczyszczenie flag kalwiszy i lpma dla gracza
+		players[myPlayerIndex].resetBoolka(); 
 	}
 }
 
